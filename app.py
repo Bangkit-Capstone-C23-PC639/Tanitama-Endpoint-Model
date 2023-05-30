@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import requests
 import tensorflow as tf
 import numpy as np
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import io
 from PIL import Image
 import time

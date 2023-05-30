@@ -1,11 +1,30 @@
 from flask import Flask, request, jsonify
+import requests
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import io
+from PIL import Image
+import time
+
 
 app = Flask(__name__)
 
+def predict_image(image, model):
+    image = image.resize((150, 150))
+    image = np.array(image) / 255.0
+    image = np.expand_dims(image, axis=0)
+
+    start_time = time.time()
+    prediction = model.predict(image)
+    end_time = time.time()
+    time_predict = end_time - start_time
+
+    predicted_class = np.argmax(prediction)
+    accuracy = np.max(prediction) * 100
+    accuracy = int(accuracy) if accuracy.is_integer() else round(accuracy, 2)
+
+    return predicted_class, accuracy, time_predict
 
 @app.get('/')
 def index():
@@ -131,19 +150,28 @@ def index():
     """
     return documentasi
 
-
 @app.post('/rice-leaf')
 def riceLeaf():
     try:
-        data = request.files['image']
-        image = load_img(io.BytesIO(data.read()), target_size=(150, 150))
-        image = img_to_array(image)
-        image /= 255
-        image = np.expand_dims(image, axis=0)
+        json_data = request.get_json()
+        image_url = json_data.get('image', '')
+        response = requests.get(image_url)
+        
+        if response.status_code == 200:
+            image_bytes = response.content
+            image = Image.open(io.BytesIO(image_bytes))
 
-        model = tf.keras.models.load_model('model/modelv5.h5')
-        predict = str(np.argmax(model.predict(image)))
-        return jsonify({"prediction": predict})
+            model = tf.keras.models.load_model('model/modelv5.h5')
+            predict, accuracy, time_predict = predict_image(image, model)
+        
+            return jsonify({
+                "prediction": int(predict),
+                "accuracy" : float(accuracy),
+                "time_predict": float(time_predict)
+            })
+
+        else:
+            return jsonify({'error': 'Failed to fetch image from URL'})
 
     except Exception as e:
         return jsonify({'error': str(e)})

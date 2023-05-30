@@ -1,12 +1,9 @@
 # Tanitama-Endpoint-Model
 
-## Machine Learning Model API Documentation
-
-
-| Endpoint   | Method | Content-Type       | Description                                      |
-|------------|--------|--------------------|--------------------------------------------------|
-| /          | GET    | -                  | Dokumentasi Model API                            |
-| /rice-leaf | POST   | multipart/form-data | This endpoint allows you to make predictions using the trained machine learning model on image inputs. |
+| Endpoint   | Method | Content-Type            | Description                                      |
+|------------|--------|-------------------------|--------------------------------------------------|
+| /          | GET    | text/html; charset=utf-8| Dokumentasi Model API                            |
+| /rice-leaf | POST   | multipart/form-data     | This endpoint allows you to make predictions using the trained machine learning model on image inputs. |
 
 #### Request:
 

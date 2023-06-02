@@ -1,73 +1,73 @@
-# Tanitama-Endpoint-Model
+# API Documentation
 
-| Endpoint   | Method | Content-Type            | Description                                      |
-|------------|--------|-------------------------|--------------------------------------------------|
-| /          | GET    | text/html; charset=utf-8| Dokumentasi Model API                            |
-| /rice-leaf | POST   | multipart/form-data     | This endpoint allows you to make predictions using the trained machine learning model on image inputs. |
+Below is the documentation for the API that can be used in this project. The API consists of the following endpoints:
 
-#### Request:
+| Endpoint   | Method | Content Type     | Description                                   |
+| ---------- | ------ | ---------------- | --------------------------------------------- |
+| `/`        | GET    | None             | Provides information about TaniTama Indonesia |
+| `/predict` | POST   | application/json | Makes predictions using the deployed model    |
 
-Form Parameters:
+## Endpoint `/`
 
-| Parameter | Type | Description              |
-|-----------|------|--------------------------|
-| image     | file | The image file for prediction. |
+- **Method**: GET
+- **Content Type**: None
+
+**Description**: This endpoint provides information about TaniTama Indonesia.
 
 Example Request:
 
 ```
-POST /rice-leaf
-Content-Type: multipart/form-data
-
-[image file]
+GET http://localhost:8881/
 ```
-
-#### Response:
-
-- Content-Type: application/json
-
-Body Parameters:
-
-| Parameter  | Type   | Description                                 |
-|------------|--------|---------------------------------------------|
-| prediction | String | The predicted class label for the input image. |
 
 Example Response:
 
 ```
-HTTP/1.1 200 OK
+Status: 200 OK
 Content-Type: application/json
 
 {
-  "prediction": "0"
+    "message": "TaniTama Indonesia"
 }
 ```
 
-#### Error Responses:
+## Endpoint `/predict`
 
-| HTTP Status Code | Description                                     |
-|------------------|-------------------------------------------------|
-| 400 Bad Request  | Invalid request body or unsupported image format. |
-| 500 Internal Server Error | An error occurred while processing the prediction. |
+- **Method**: POST
+- **Content Type**: application/json
 
-Example Error Response (400 Bad Request):
+**Description**: This endpoint is used to make predictions using the deployed model.
+
+Example Request:
 
 ```
-HTTP/1.1 400 Bad Request
+POST http://localhost:8881/predict
 Content-Type: application/json
 
 {
-  "error": "Invalid request body or unsupported image format."
+    "input": "data to be predicted"
 }
 ```
 
-Example Error Response (500 Internal Server Error):
+Example Response:
 
 ```
-HTTP/1.1 500 Internal Server Error
+Status: 200 OK
 Content-Type: application/json
 
 {
-  "error": "An error occurred while processing the prediction."
+    "prediction": "prediction result"
 }
 ```
+
+Note: Make sure to send data in the expected format in the request body. Replace "data to be predicted" with the actual data you want to predict.
+
+You can use HTTP libraries or tools like cURL or Postman to send requests to these endpoints.
+
+Make sure to replace the base URL and port with the appropriate address for your API implementation.
+
+## Conclusion
+
+With this documentation, you can use the `/` endpoint to get information about TaniTama Indonesia and use the `/predict` endpoint to make predictions using the deployed model.
+
+Please note that this is an example documentation and you should adjust it to match your own API implementation and specifications.

@@ -7,7 +7,33 @@ Below is the documentation for the API that can be used in this project. The API
 | `/`        | GET    | None             | Provides information about TaniTama Indonesia |
 | `/predict` | POST   | application/json | Makes predictions using the deployed model    |
 
-## Endpoint `/`
+## Docker
+
+The API can be run inside a Docker container for easy management and deployment. Make sure Docker is installed in your environment before proceeding.
+
+### Running the API with Docker:
+
+1. Pull the Docker image that has been prepared for this application:
+
+```
+docker pull docker-image-name:tag
+```
+
+Make sure to replace `docker-image-name` and `tag` with the appropriate Docker image name and version.
+
+2. Run a Docker container using the downloaded image:
+
+```
+docker run -p 8881:8881 docker-image-name:tag
+```
+
+This command will run a Docker container and map port 8881 inside the container to port 8881 on your localhost. You can change the port as per your preference.
+
+## Endpoints
+
+Below are the details of each available endpoint in the API:
+
+### Endpoint `/`
 
 - **Method**: GET
 - **Content Type**: None
@@ -31,7 +57,7 @@ Content-Type: application/json
 }
 ```
 
-## Endpoint `/predict`
+### Endpoint `/predict`
 
 - **Method**: POST
 - **Content Type**: application/json
@@ -60,14 +86,12 @@ Content-Type: application/json
 }
 ```
 
-Note: Make sure to send data in the expected format in the request body. Replace "data to be predicted" with the actual data you want to predict.
+Note: Make sure to send data in the expected format in the request body. Replace the value of "input" with the URL of the image you want to predict. The response will contain the predicted value.
 
-You can use HTTP libraries or tools like cURL or Postman to send requests to these endpoints.
-
-Make sure to replace the base URL and port with the appropriate address for your API implementation.
+Please ensure that you have the correct base URL and port when making requests to the endpoints.
 
 ## Conclusion
 
-With this documentation, you can use the `/` endpoint to get information about TaniTama Indonesia and use the `/predict` endpoint to make predictions using the deployed model.
+By running the Docker container provided, you can access the two API endpoints to get information about TaniTama Indonesia and make predictions using the deployed model.
 
 Please note that this is an example documentation and you should adjust it to match your own API implementation and specifications.

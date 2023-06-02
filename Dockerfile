@@ -7,13 +7,11 @@ WORKDIR /app
 # Menyalin requirements.txt ke dalam container
 COPY requirements.txt .
 
-RUN pip install --upgrade pip
-
 # Menginstall dependencies yang diperlukan
 RUN pip install -r requirements.txt
 
 # Menyalin seluruh file aplikasi ke dalam container
-COPY . .
+COPY . ./
 
 # Menjalankan perintah untuk memulai aplikasi Flask
 CMD ["python", "app.py"]

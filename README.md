@@ -13,6 +13,8 @@ The API can be run inside a Docker container for easy management and deployment.
 
 ### Running the API with Docker:
 
+**Docker Image**: [rosyihuddin/leaf-disease-endpoints-model](https://hub.docker.com/r/rosyihuddin/leaf-disease-endpoints-model)
+
 1. Pull the Docker image that has been prepared for this application:
 
 ```
@@ -34,7 +36,7 @@ Below are the details of each available endpoint in the API:
 ### Endpoint `/`
 
 - **Method**: GET
-- **Content Type**: None
+- **Content Type**: application/json
 
 **Description**: This endpoint provides information about TaniTama Indonesia.
 
@@ -93,5 +95,3 @@ Please ensure that you have the correct base URL and port when making requests t
 By running the Docker container provided, you can access the two API endpoints to get information about TaniTama Indonesia and make predictions using the deployed model.
 
 Please note that this is an example documentation and you should adjust it to match your own API implementation and specifications.
-
-**Docker Image**: [rosyihuddin/leaf-disease-endpoints-model](https://hub.docker.com/r/rosyihuddin/leaf-disease-endpoints-model)

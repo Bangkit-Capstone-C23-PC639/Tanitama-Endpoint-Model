@@ -1,6 +1,6 @@
 # API Documentation
 
-Below is the documentation for the API that can be used in this project. The API consists of the following endpoints:
+Below is the documentation for the API used in this project. The API consists of the following endpoints:
 
 | Endpoint   | Method | Content Type     | Description                                   |
 | ---------- | ------ | ---------------- | --------------------------------------------- |
@@ -16,15 +16,13 @@ The API can be run inside a Docker container for easy management and deployment.
 1. Pull the Docker image that has been prepared for this application:
 
 ```
-docker pull docker-image-name:tag
+docker pull rosyihuddin/leaf-disease-endpoints-model:latest
 ```
-
-Make sure to replace `docker-image-name` and `tag` with the appropriate Docker image name and version.
 
 2. Run a Docker container using the downloaded image:
 
 ```
-docker run -p 8881:8881 docker-image-name:tag
+docker run -p 8881:8881 rosyihuddin/leaf-disease-endpoints-model:latest
 ```
 
 This command will run a Docker container and map port 8881 inside the container to port 8881 on your localhost. You can change the port as per your preference.
@@ -82,7 +80,7 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-    "prediction": 2
+    "prediction": 0
 }
 ```
 
@@ -95,3 +93,5 @@ Please ensure that you have the correct base URL and port when making requests t
 By running the Docker container provided, you can access the two API endpoints to get information about TaniTama Indonesia and make predictions using the deployed model.
 
 Please note that this is an example documentation and you should adjust it to match your own API implementation and specifications.
+
+**Docker Image**: [rosyihuddin/leaf-disease-endpoints-model](https://hub.docker.com/r/rosyihuddin/leaf-disease-endpoints-model)

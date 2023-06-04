@@ -82,7 +82,9 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-    "prediction": 0
+    "accuracy": 100.0,
+    "prediction": 0,
+    "time_predict": 6.238067626953125
 }
 ```
 

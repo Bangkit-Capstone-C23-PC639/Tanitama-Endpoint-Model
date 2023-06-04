@@ -71,7 +71,7 @@ POST http://localhost:8881/predict
 Content-Type: application/json
 
 {
-    "input": "https://content.peat-cloud.com/w400/bacterial-blight-of-rice-rice-1581498954.jpg"
+    "image": "https://content.peat-cloud.com/w400/bacterial-blight-of-rice-rice-1581498954.jpg"
 }
 ```
 
